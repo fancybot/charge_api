@@ -14,7 +14,7 @@ def get_code(money):
     payload = {'money': str(money), 'paytype': 'wechat_code'}
     r = requests.post(url, headers=headers, data=payload)
     # print r.text
-    soup = BeautifulSoup(r.text, 'lxml')
+    soup = BeautifulSoup(r.text, 'html.parser')
     item = soup.find_all('img')[1]['src']
     code = host+item
     order_no = soup.input['value']
